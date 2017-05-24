@@ -1,0 +1,6 @@
+- hosts: weblogic
+  user: a1704
+  gather_facts: true
+  connection: local
+  roles:
+    - role: ../roles/ics_deploy

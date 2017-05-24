@@ -1,0 +1,9 @@
+---
+- name: configure and migrate flyway scripts
+  hosts: localhost
+  user: devops
+  gather_facts: true
+  connection: local
+  roles:
+     - { role: roles/flyway-ics }
+

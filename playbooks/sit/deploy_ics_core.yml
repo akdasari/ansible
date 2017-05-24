@@ -1,0 +1,7 @@
+- hosts: ics_core
+  user: devops
+  gather_facts: yes
+  roles:
+    - role: roles/ics_common
+    - role: roles/ics-artifacts
+    - {role: roles/ics_deploy, domain: '{{domain}}'}

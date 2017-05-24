@@ -1,0 +1,9 @@
+---
+- hosts: ips_transformer1
+  connection: local
+  gather_facts: false
+  tasks:
+    - debug: msg="hostvars={{ inventory_hostname }}"
+    - name: copy ssh key on target machine
+      local_action: "sh scripts/copy_keys.sh {{ lookup('env','USER') }} {{inventory_hostname}}"
+

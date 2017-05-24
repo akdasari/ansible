@@ -1,0 +1,31 @@
+# Oracle os user and group
+oracle_user: 'oracle'
+oracle_group: 'oinstall'
+# Software and configuration main directory
+oracle_base: '/fs01/app/oracle'
+
+# JDK installer and target folder
+jdk_folder: '{{ oracle_base }}/jdk1.8.0_111'
+
+#Domain specific vars
+runtime_home: '/fs01/app/oracle/middleware/wls12212'
+domain_name: 'ics-core'
+configuration_home: '{{ runtime_home }}/configuration'
+domain_configuration_home: '{{ configuration_home }}/domains/{{ domain_name }}'
+domain_application_home: '{{ configuration_home }}/applications/{{ domain_name }}'
+middleware_home: '{{ runtime_home }}'
+java_home: '{{ jdk_folder }}'
+weblogic_home: '{{ runtime_home }}/wlserver'
+
+# Directory where the scripts for the WebLogic lifecycle are placed
+scripts_directory: "/fs01/app/oracle/middleware/scripts"
+
+setenv_script_sh: '{{ scripts_directory }}/SetEnv.sh'
+
+##### executors #####
+java:                       "{{ java_home }}/bin/java"
+admin_server_start_service: "{{ scripts_directory }}/AdminServerStartService.sh"
+pack_sh:                    "{{ weblogic_home }}/common/bin/pack.sh"
+unpack_sh:                  "{{ weblogic_home }}/common/bin/unpack.sh"
+wlst_sh:                    "{{ weblogic_home }}/common/bin/wlst.sh"
+weblogic_server_props:     "{{ scripts_directory }}/env.properties"

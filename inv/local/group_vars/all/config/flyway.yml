@@ -1,0 +1,11 @@
+flyway_root: /opt/flyway
+flyway_version: 4.2.0
+database:
+  dbms: oracle
+  name: XE
+  address: "localhost"
+  username: "SYSTEM"
+  password: "Oracle123"
+  port: "1521"
+schemas: public
+flyway_table: schema_history

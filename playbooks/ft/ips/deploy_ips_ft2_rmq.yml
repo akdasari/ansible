@@ -1,0 +1,14 @@
+- hosts: ips_rmq
+  user: devops
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  roles:
+    - role: roles/ips_common
+    - role: roles/create_ips_yum
+#    - role: roles/copy_ips_config
+    - role: roles/ips-artifacts
+    - {role: roles/ips_deploy, domain: 'base' }
+    - {role: roles/ips_deploy, domain: 'erlang' }
+#    - role: roles/validate_ips_config
+    - {role: roles/ips_deploy, domain: 'rmq'}

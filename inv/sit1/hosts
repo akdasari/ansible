@@ -1,0 +1,11 @@
+[env]
+/fs01/ansible/inv/sit1
+
+[ics_core]
+10.105.72.68
+
+[ics-settlement]
+10.105.72.69
+
+[ics-db]
+10.105.75.32

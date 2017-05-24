@@ -1,0 +1,9 @@
+- hosts: ics_core
+  user: devops
+  gather_facts: yes
+  roles:
+    - role: roles/ics_common
+    - {role: roles/start-mserver, domain: 'core'}
+    - {role: roles/start-mserver, domain: 'bo'}
+    - {role: roles/start-mserver, domain: 'access'}
+    - {role: roles/start-mserver, domain: 'portal'}

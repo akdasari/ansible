@@ -1,0 +1,15 @@
+---
+- name: download artifact from nexus 
+  hosts: localhost
+  connection: local
+  #vars_files:
+    # User defined variables for infrastructure
+  #  - ../inv/test/group_vars/all/config/nexus-vars.yml
+#  roles:
+#    - { role: ../roles/nexus-download, artifact_id: 'signature-service', artifact_version: '0.0.1-SNAPSHOT' }
+#    - { role: ../roles/nexus-download, artifact_id: 'core-util', artifact_version: '0.0.1-SNAPSHOT', packaging: 'jar' }
+#
+  roles: 
+     - { role: roles/ics_common }
+     - { role: roles/ics-download-artifacts }
+     - { role: roles/nexus-download, domain: '{{ domain }}' }

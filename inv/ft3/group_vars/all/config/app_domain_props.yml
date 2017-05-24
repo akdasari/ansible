@@ -1,0 +1,21 @@
+######################################
+## file : apllication domain properties
+### Author: Anand Dasari
+### Organization: Vocalink
+### Desc :  This file holds applications
+### property  details for all domains.
+#######################################
+imq:    jms/IMQ
+coredatasource:         jdbc/icsCoreUserDataSource
+safestoresource:        jdbc/icsSafeStoreUserDataSource 
+aqschema:               FT3_ICSAQ
+qm_name:                FT3_ICS_MQ1
+qm_host:                10.105.62.19
+qm_port:                1416
+qm_channel:             IPS.APP.CHANNEL
+ics_user:               bea
+stub_participant_prefix:        BANK01.,BANK03.,BANK05.,BANK21.
+swagger_version:        1.0.0-SNAPSHOT
+iscd_path:              /fs01/release/iscd/report.zip
+cass_path:              /fs01/release/cass/cass.zip
+

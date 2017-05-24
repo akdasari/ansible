@@ -1,0 +1,13 @@
+######################################
+## file : weblogicserverproperties
+## Author: Anand Dasari
+## Organization: Vocalink
+## Desc :  This file holds weblogic
+##  environemnt details.
+######################################
+cluster_name:                "ciC01_icscore_core"
+admin_server_name:           "ciC01_icscore_admin"
+admin_username:              "operator"
+admin_password:              "operatorciC01"
+admin_server_listen_port:    "57300"
+admin_server_listen_address: "wls-admin-csap6002.test.vocalink.co.uk"

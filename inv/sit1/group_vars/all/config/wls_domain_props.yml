@@ -1,0 +1,47 @@
+######################################
+## file : weblogic domain properties
+## Author: Anand Dasari
+## Organization: Vocalink
+## Desc :  This file holds weblogic
+## environment details for all domains.
+######################################
+
+wls_config:
+   core:
+       cluster_name: "stC01_icscore_core"
+       admin_server_name: "stC01_icscore_admin"
+       admin_server_listen_port: "60500"
+       admin_server_listen_address: "wls-admin-csap5121.test.vocalink.co.uk"
+   access:
+       cluster_name: "stC31_icsaccess_access"
+       admin_server_name: "stC31_icsaccess_admin"
+       admin_server_listen_port: "60800" 
+       admin_server_listen_address: "wls-admin-csap5121.test.vocalink.co.uk"
+   bo:
+       cluster_name: "stC11_icsbo_bo"
+       admin_server_name: "stC11_icsbo_admin"
+       admin_server_listen_port: "60600"
+       admin_server_listen_address: "wls-admin-csap5121.test.vocalink.co.uk"
+   portal:
+       cluster_name: "stC41_icsportal_portal"
+       admin_server_name: "stC41_icsportal_admin"
+       admin_server_listen_port: "60900" 
+       admin_server_listen_address: "wls-admin-csap5121.test.vocalink.co.uk"
+   settlement:
+       cluster_name: "stC21_icssettlement_settlement"
+       admin_server_name: "stC21_icssettlement_admin"
+       admin_server_listen_port: "60700" 
+       admin_server_listen_address: "wls-admin-csap5122.test.vocalink.co.uk"
+   sws:
+       cluster_name: "stC51_icsipsbo_ipsbo"
+       admin_server_name: "stC51_icsipsbo_admin"
+       admin_server_listen_port: "61000" 
+       admin_server_listen_address: "wls-admin-csap5122.test.vocalink.co.uk"
+   gateway:
+       cluster_name: "stC01_icscore_core"
+       admin_server_name: "stC01_icscore_admin"
+       admin_server_listen_port: "60500"
+       admin_server_listen_address: "wls-admin-csap5121.test.vocalink.co.uk"
+
+admin_username:              "devops"
+admin_password:              "{{ admin_password }}"

@@ -1,0 +1,8 @@
+---
+- name: download artifact from nexus 
+  hosts: localhost
+  connection: local
+  roles: 
+     - { role: roles/ips_common }
+     - { role: roles/ips-artifacts }
+     - { role: roles/nexus-download, domain: '{{ domain }}' }

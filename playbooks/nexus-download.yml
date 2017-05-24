@@ -1,0 +1,8 @@
+---
+- name: download artifact from nexus 
+  hosts: ics_core
+  user: devops
+  roles:
+    - { role: roles/common } 
+    - { role: roles/core_artifacts }
+    - { role: roles/nexus-download }

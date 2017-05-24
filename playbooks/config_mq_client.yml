@@ -1,0 +1,34 @@
+
+- name: Configure MQ Client
+  hosts: ips_switch
+  user: devops
+  gather_facts: yes
+  become: yes
+ 
+  tasks:
+    - name: create tmp location
+      file: path={{ tmpMQHome }} state=directory
+    
+    - name: copy local tar file to remote target
+      copy:
+        src: /fs01/deploy/mqdev/app/mqdev-8.0.0-4.tgz
+        dest: "{{ tmpMQHome }}"
+        mode: "u+rwx,g-wx,o-rw"
+      register: copied_tar
+    - wait_for: path={{ tmpMQHome }}/mqdev-8.0.0-4.tgz
+
+    - name: extract tar file
+      unarchive:
+         src: "{{ tmpMQHome }}/mqdev-8.0.0-4.tgz"
+         dest: "{{ tmpMQHome }}"
+         remote_src: True
+    
+    - name: accept mqlicense
+      shell: "/usr/bin/sh {{ MQServerHome }}/mqlicense.sh -accept"
+      register: mqlicense_accept
+    - debug: var=mqlicense_accept.stdout_lines 
+
+    - name: install mq client rpm
+      command: "rpm -Uvh {{ MQServerHome }}/MQSeriesRuntime-*.rpm {{ MQServerHome }}/MQSeriesClient-*.rpm {{ MQServerHome }}/MQSeriesSDK-*.rpm"
+      register: rpm_install
+    - debug: var=rpm_install.stdout_lines

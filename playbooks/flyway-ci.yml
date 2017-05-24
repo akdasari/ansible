@@ -1,0 +1,19 @@
+- hosts: localhost
+  user: devops
+  gather_facts: true
+#  become: true
+  connection: local
+  roles:
+    - { role: roles/flyway-ics }
+#  vars:
+#    - flyway_driver: oracle.jdbc.OracleDriver
+#    - flyway_config:
+#       database:
+#       dbms: oracle
+#       host: localhost
+#       port: 1521
+#       name: XE
+#       user: APP
+#       password: appsecret
+#       schemas: APP
+#    - flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo

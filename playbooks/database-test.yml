@@ -1,0 +1,6 @@
+- hosts: localhost
+  user: devops
+  connection: local
+  gather_facts: false
+  tasks:
+    - local_action: shell /fs01/ansible/test.sh

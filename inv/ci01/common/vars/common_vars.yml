@@ -1,0 +1,8 @@
+##### deploy actions #####
+deploy_targets:                        "{{ cluster_name }}"
+# deploy_action is either deploy or undeploy
+deploy_action:                         "undeploy"
+artefact_names: ["helloworld", ""]
+artifact_id: signature-service
+artifact_version: 0.0.1-SNAPSHOT
+packaging: war

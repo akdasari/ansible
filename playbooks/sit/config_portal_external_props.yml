@@ -1,0 +1,10 @@
+
+- name: configure target  host
+  
+  hosts: ics_core
+  user: devops
+  gather_facts: yes
+
+  roles:
+    - role: roles/ics_build_fix
+    - role: roles/config_portal_properties

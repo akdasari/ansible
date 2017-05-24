@@ -1,0 +1,48 @@
+# properties for  IPS nodes
+
+switch1:        icap531v
+switch2:        icap531w
+switch3:        icap531x
+switch4:        icap531y
+
+lmgr1:          icap531v
+lmgr2:          icap531w
+lmgr3:          icap531x
+lmgr4:          icap531y
+
+swrabbitmq1:    icap532e
+swrabbitmq2:    icap532f
+swrabbitmq3:    icap532g
+swrabbitmq4:    icap532h
+
+backoffice1:    icap532k
+backoffice2:    icap532m
+backoffice3:    icap532m
+backoffice4:    icap532k
+
+borabbitmq1:    icap532k
+borabbitmq2:    icap532m
+borabbitmq3:    icap532m
+borabbitmq4:    icap532k
+
+transformer1:   icap5328
+transformer2:   icap5329
+transformer3:   icap532b
+transformer4:   icap532c
+
+dsp1:           icap5328
+dsp2:           icap5329
+dsp3:           icap532b
+dsp4:           icap532c
+
+adb1:           csdb5112-db
+adb2:           csdb5212-db
+
+tdb1:           csdb5112-db
+tdb2:           csdb5212-db
+
+msim1:          icsm5201
+msim2:          icsm5202
+
+swmq1:          icmq5205
+swmq2:          icmq5206 

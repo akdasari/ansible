@@ -1,0 +1,36 @@
+- hosts: ips_backoffice
+  user: devops
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  roles:
+#    - role: roles/common
+#    - role: roles/create_ips_yum
+    - {role: roles/copy_ips_config, number: one, digit: 1 } 
+    - {role: roles/copy_ips_config, number: two, digit: 2 } 
+    - {role: roles/copy_ips_config, number: three, digit: 3 } 
+    - {role: roles/copy_ips_config, number: four, digit: 4 } 
+#    - role: roles/ips-artifacts
+#    - {role: roles/ips_deploy, domain: "base" } 
+#    - {role: roles/ips_deploy, domain: "erlang" } 
+#    - role: roles/validate_ips_config
+#    - {role: roles/ips_deploy, domain: 'rmq'}
+#    - role: roles/rmq_config
+#    - {role: roles/ips_deploy, domain: 'tomcat'}
+#    - {role: roles/ips_deploy, domain: 'bo'}
+
+#- hosts: ips_backoffice1
+#  become: true
+#  become_method: sudo
+#  roles:
+#     - role: roles/common
+#     - role: roles/create_ips_yum
+#     - role: roles/copy_ips_config
+#     - role: roles/ips-artifacts
+#     - {role: roles/ips_deploy, domain: "base" }
+#     - {role: roles/ips_deploy, domain: "erlang" }
+#     - role: roles/ft_ips_config
+#     - {role: roles/ips_deploy, domain: 'rmq'}
+#     - role: roles/rmq_config1
+#     - {role: roles/ips_deploy, domain: 'tomcat'}
+#     - {role: roles/ips_deploy, domain: 'bo'}

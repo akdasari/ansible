@@ -1,0 +1,8 @@
+nexus_host:    10.105.32.4 
+nexus_port:    8081
+repository:    public
+group_id:   com.vocalink.ics
+artefact_id:    signature-service
+artefact_version: 0.0.1
+packaging:    war
+

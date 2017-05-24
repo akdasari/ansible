@@ -1,0 +1,8 @@
+- hosts: ips_switch
+  user: devops
+  become: true
+  become_method: sudo
+  gather_facts: yes
+  roles:
+    - {role: roles/start_sw_lm_nodes}
+

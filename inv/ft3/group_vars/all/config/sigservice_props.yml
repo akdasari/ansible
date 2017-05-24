@@ -1,0 +1,11 @@
+ezsignserver_address: 10.105.62.12
+ezsignserver_port:    5656
+ezsign_sign_ch:       BANK10HW
+ezsign_verify_ch:     BANK10HW
+ezsign_rnd_depth:     64
+ss_jndi:              icsSafeStoreDataSource
+sign_path:            /Document/TxSetSubmissn/GrpHdr/Sgntr
+hash_iterations:      50000
+hash_algorithm:       SHA256
+hash_service_algorithm: PBKDF2WithHmacSHA512 
+

@@ -1,0 +1,73 @@
+ezsignserver_address: 10.105.71.34
+ezsignserver_port:    5656
+ezsign_sign_ch:       SIGN
+ezsign_verify_ch:     VERIFY
+ezsign_rnd_depth:     64
+ezsign_enrypt_algorithm: AES256_CBC
+ss_jndi:              icsSafeStoreDataSource
+c_jndi:               icsCoreDataSource
+sign_path:            /Document/TxSetSubmissn/GrpHdr/Sgntr
+hash_iterations:      50000
+hash_algorithm:       SHA-256
+sym_key_alias:        ICS_SSO_KEY
+hash_service_algorithm: PBKDF2WithHmacSHA512 
+safestore_jndi:       icsSafeStoreDataSource
+core_jndi:            icsCoreDataSource
+db_ics_aq:            ST1_ICSAQ
+aq_queue_prefix:      oracleAQ:queue:ST1_ICSAQ
+aq_topic_prefix:      oracleAQ:topic:ST1_ICSAQ
+ics_alert_queue:      cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+aq_session_cache_size: 5
+swagger_contact:      ics.ops@vocalink.com
+mail_jndi:            mail/smtp
+mail_protocol:        smtp
+mail_from:            ICS_support@vocalink.com
+email_event_queue_params:       cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+bo_product_name:      ICS Backoffice Service
+ips_backoffice_url:   http:\//wls-csap5122.test.vocalink.co.uk:61021\/ips
+alert_threshold:      10
+ics_eisd_loader_params: cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+bacs_base_url:        http://localhost
+bacs_username:        username
+bacs_pwd:             pwd
+
+sig_service_url:      http:\//10.105.71.214:8085\/signature-service
+banktec_queue:        oracleAQ:queue:ST1_ICSAQ.Q_TRANSMISSION_FILE_BT?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=10&maxConcurrentConsumers=10&maxMessagesPerTask=10
+banktec_thir_in:      /shared/bt/thir/in/
+banktec_thir_out:     /shared/bt/thir/out/
+banktec_pnp_in:       /shared/bt/pnp/in/
+banktec_pnp_out:      /shared/bt/pnp/out/
+slave_mode:           "false"
+connector_slave_mode: "false"
+backoffice_url:        http:\//10.105.71.211:8085\/ICSBackoffice\/v1\/ics_api 
+ITS_url:               http:\//wls-csap5122.test.vocalink.co.uk:60721\/token-service
+imq_jndi:              jms/IMQ
+stub_participants:     ICS.,BANK01.,BANK03., BANK05.
+mq_mgr:                ICS_MQ1
+mq_host_name:          10.105.71.31
+mq_port:               1416
+mq_channel:            ICS.APP.CHANNEL
+req_to_ips:            REQUEST.TO.IPS
+req_from_ips:          REQUEST.FROM.IPS
+res_to_ips:            RESPONSE.TO.IPS
+res_from_ips:          RESPONSE.FROM.IPS
+mq_user:               bea
+iscd_import_path:      /fs01/release/iscd/report.zip
+cass_import_path:      /fs01/release/cass/cass.zip
+portal_url:            https:\//sit-test.ics.vocalink.com\/PortalWeb
+ext_ref_data:          nonTransactionalOracleAQ:queue:ST1_ICSAQ.Q_LOAD_EXT_REF_DATA?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+queue_sync_cass:      oracleAQ:queue:ST1_ICSAQ.Q_SYNC_CASS_EVENT?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+queue_sync_iscd:       oracleAQ:queue:ST1_ICSAQ.Q_SYNC_ISCD_EVENT?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+queue_day_status:      oracleAQ:queue:ST1_ICSAQ.Q_DAY_STATUS_CHANGE?jmsMessageType=Text
+queue_file_changed:    oracleAQSS:queue ST1_ICSAQ.Q_FILE_CHANGED?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=5&maxMessagesPerTask=5
+
+portal_cookie_path:    \/
+banctec_payment_decision_url:   https:\//sit-test.ics.vocalink.com\/pnp\/
+transaction_history_archive_url: https:\//sit-test.ics.vocalink.com\/thir\/
+portal_product_name:   ICS Portal Service
+
+direct_prefix:        'direct:'
+mq_prefix:            'imq:queue:'
+mq_topic_prefix:      'imq:topic:'
+
+camel_spool_dir:      '/fs01/app/stC31/apptmp'  

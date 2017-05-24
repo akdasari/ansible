@@ -1,0 +1,16 @@
+- hosts: ics_core
+  user: devops
+  gather_facts: true
+
+- name: Set env variables Execute the script
+  command: sh test.sh
+  args:
+    chdir: /home/{{ ansible_user_id }}/scripts
+  environment:
+    
+- name: Echo java_home
+  shell: "echo $JAVA_HOME"
+#- debug: msg="{{ ansible_env.JAVA_HOME }}"
+
+#- name: Echo my_env_var again
+#  shell: "echo $MW_HOME"

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+################################################
+# file :core domain  deploy script
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :This file  sets the environment to deploy
+#    And deploy/undeploy the applications.
+################################################
+
+echo " Exporting Environment Variables"
+. {{ wls_domain_config.core.env_script_sh }}
+
+echo " Setting Weblogic Environment classpath "
+. {{ wls_domain_config.core.wlsenv_sh }}
+
+echo " Running deployment Command"
+java -Dweblogic.security.SSL.trustedCAKeyStore={{ keysore_location }} weblogic.WLST -loadProperties {{ wls_domain_config.core.domain_props }} {{ wls_domain_config.core.deploy_artifacts_py }}

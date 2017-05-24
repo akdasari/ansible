@@ -1,0 +1,19 @@
+---
+- name: create managed server python template 
+  template:
+    src=../templates/start-mserver.py.j2
+    dest="{{ wls_domain_config.core.mserver_start_py }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"
+  register: start_mserver_py created
+
+
+- name: create managed server start script
+  template:
+    src=../templates/start-mserver.j2
+    dest="{{ wls_domain_config.core.mserver_start_sh }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode=0644
+

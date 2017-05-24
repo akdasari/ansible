@@ -1,0 +1,30 @@
+######################################################
+# This file is generated thru ansible template
+#  Do not remove or modify
+# file : ips-stub properties
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :  This file holds external properties for 
+#         core domain 
+#######################################################
+participant.prefixes={{ stub_participants }}
+
+#QM-1
+mq.manager.name={{ mq_mgr }}
+mq.host.name={{ mq_host_name }}
+mq.port={{ mq_port }}
+mq.channel={{ mq_channel }}
+
+
+
+ics.request.to.ips.mq={{ req_to_ips }}
+ics.request.from.ips.mq={{ req_from_ips }}
+ics.response.to.ips.mq={{ res_to_ips }}
+ics.response.from.ips.mq={{ res_from_ips }}
+
+ics.user.id={{ mq_user }}
+mq.transport.type=1
+#consumer.counter=5
+
+msgid.xpath=MsgId
+

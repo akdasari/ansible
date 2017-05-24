@@ -1,0 +1,74 @@
+---
+# File : copy_artefacts.yml
+# Author : Anand Dasari
+# This file copies Artefcts from nexus to
+# local folder for deployment
+#
+
+#before copy make sure the target dir exists
+
+- name: precheck if app dir exists
+  file:
+    path: "{{ domain_application_home }}/{{ item.0 }}/app/"
+    state: directory
+    mode: 0755
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+
+- name: precheck if plan dir exists
+  file:
+    path: "{{ domain_application_home }}/{{ item.0 }}/plan/"
+    state: directory
+    mode: 0755
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+
+# now copy the artifacts on target VM 
+- name: copy deployment artifacts
+  copy:
+    src="{{local_artifacts }}/{{ item.0 }}/app/{{ item.0 }}-{{ item.1 }}.{{ item.2 }}"
+    dest="{{ domain_application_home }}/{{ item.0 }}/app/{{ item.0 }}.{{ item.2 }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+         - "{{ env[domain].artifact_version }}"
+         - "{{ env[domain].packaging }}"
+  register: env[domain].artifacts_copied
+
+- name: check wheter we want to copy the plan xml file
+  local_action: stat path="{{local_artifacts }}/{{ item.0 }}/plan/plan.xml"
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+  register: result
+
+- debug:
+   var: result
+
+#- name: test_foo
+#  debug:
+#    msg: 'file path {{item.item}} exists'
+#  with_items: "{{ result.results }}"
+#  when: item.stat.exists
+#  notify:
+#    - copy_plan
+
+
+#- name: Printing message
+#  debug: msg="Values are {{item[0]}} and {{item[1]}}"
+#  with_nested:
+#        - "{{ result.results }}"
+#        - "{{env[domain].artifact_names}}"
+#  when: results.stat.exists
+
+ 
+- name: copy deployment plan
+  copy:
+    src="{{local_artifacts }}/{{ item.0 }}/plan/plan.xml"
+    dest="{{ domain_application_home }}/{{ item.0 }}/plan/plan.xml"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+  when: result.results[0].stat.exists
+  register: env[domain].plan_copied

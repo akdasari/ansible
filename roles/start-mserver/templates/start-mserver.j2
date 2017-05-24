@@ -1,0 +1,18 @@
+#!/bin/sh
+
+################################################
+# file : start[ domain].managed server
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :This file starts[ domain].managed server
+################################################
+
+echo " Exporting Environment Variables"
+. {{ wls_domain_config[ domain].env_script_sh }}
+
+echo " Setting Weblogic Environment classpath "
+. {{ wls_domain_config[ domain].wlsenv_sh }}
+
+echo " Running deployment Command"
+java -Dweblogic.security.SSL.trustedCAKeyStore={{ keysore_location }} weblogic.WLST -loadProperties {{ wls_domain_config[ domain].domain_props }} {{ wls_domain_config[ domain].mserver_start_py }}
+

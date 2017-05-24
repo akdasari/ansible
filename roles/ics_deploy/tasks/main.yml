@@ -1,0 +1,17 @@
+---
+# File : main.yml
+# Author : Anand Dasari
+# Organisation: Vocalink
+#
+
+- include: copy_template.yml
+- include: copy_artifacts.yml
+ 
+- name: debug registered values
+  debug: 
+    var={{ item }}
+  with_items:
+    - deploy_artifacts_py_created
+    - deployment_artifacts_copied
+
+- include: deploy_artifacts.yml

@@ -1,0 +1,72 @@
+########################################################
+# This file is generated thru ansible template
+#  Do not remove or modify
+# file : ics-core-application properties
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :  This file holds external properties for 
+#         core domain 
+#########################################################
+#DB JNDI names
+imq.cf.jndi={{ imq_jndi }}
+coreuser.datasource.jndi={{ core_jndi }}
+safestore.datasource.jndi={{ safestore_jndi }}
+db.ics.aq.schema={{ db_ics_aq }}
+
+#CachingConnectionFactory SessionCacheSize
+aq.session.cache.size=1
+mq.session.cache.size=5
+
+ics.tset.validator.executor.size=5
+
+ics.day.event.topic.retry.policy.count = 15
+ics.day.event.topic.delay.seconds = 1
+ics.dead.letter.channel.url = log:dead?level=ERROR
+
+ics.message.process.retry.policy.count = 15
+ics.message.process.retry.policy.delay.second = 1
+ics.dead.letter.channel.uri = log:dead?level=ERROR
+
+coreuser.datasource.jndi-name = {{ core_jndi }}
+aq.datasource.schema-name = {{ db_ics_aq }}
+aq.max.redeliveries  =15
+aq.redelivery.delay = 1000
+aq.dead.letter.channel = log:dead?level=ERROR
+generate-eod-msg.queue-name = Q_GENERATE_EOD_MSG_EVENT
+generate.eod.msg.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+fraud-check-response.queue-name = Q_FRD_CHECK_RESPONSE
+fraud-check-response.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+check-in-flight-tx.queue-name = Q_CHECKINFLIGHT_TX_EVENT
+check-in-flight-tx.queue-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+settlement-status-change.queue-name = Q_SETTL_STATUS_CHANGE
+settlement-status-change.consumer-params = cacheLevelName=CACHE_CONSUMER
+settlement-status-change.producer-params = jmsMessageType=Text
+settlement-event.topic-name = Q_SETTL_EVENT_TOPIC
+settlement-event.producer-params = jmsMessageType=Text
+check-rtp-inflight-tx-event.queue-name = Q_CHKRTP_INFLIGHT_TX_EVT
+check-rtp-inflight-tx-event.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+day-event.topic-name = Q_DAY_EVENT_TOPIC
+day-event.producer-params = jmsMessageType=Text
+day-status-change.queue-name = Q_DAY_STATUS_CHANGE
+day-status-change.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+day-status-change.producer-params = jmsMessageType=Text
+sign-on-participant-connector.queue-name = Q_SIGN_ON_IPS_PART_EVENT
+sign-on-participant-connector.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+
+ips-change.queue-name = Q_IPS_SYNC
+ips-change.producer-params = jmsMessageType=Text
+
+start-reconciliation.queue-name = Q_START_RECON_EVENT
+start-reconciliation.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+
+tset-in.queue-name = Q_TSET_IN
+tset-in.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=10
+
+sync-cass.queue-name = Q_SYNC_CASS_EVENT
+sync-cass.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+sync-iscd.queue-name = Q_SYNC_ISCD_EVENT
+sync-iscd.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+
+signature.service.base.url = {{ sig_service_url }}
+fraud.check.service.enabled.flag = false
+product.name = ICS Core Service

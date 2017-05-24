@@ -1,0 +1,9 @@
+---
+
+- name: create file-connector  logback xml
+  copy:
+    src=../files/logback_default.xml
+    dest="{{ wls_domain_config['core'].file_connector_logback_xml }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"

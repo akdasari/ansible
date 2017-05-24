@@ -1,0 +1,18 @@
+---
+# file :main.yml
+# Author : Anand Dasari
+# Organisation: Vocalink 
+# common config variables for ICS
+# nexus variables
+#
+nexus_host: 'tsap6002.test.vocalink.co.uk'
+nexus_port: 8081
+#group_id: com.vocalink.ics
+repository: public
+
+# local nexus artefatcs download area
+local_artifacts: /fs01/deploy
+
+# deploy action -obsolete
+deploy_action: "deploy"
+

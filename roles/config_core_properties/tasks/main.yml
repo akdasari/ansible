@@ -1,0 +1,21 @@
+---
+# File : main.yml
+# Author : Anand Dasari
+# Organization: Vocalink
+# anand.dasari@vocalink.co.uk
+# This file creates External Properties
+# for  signature service domain
+
+- name: precheck if dir exists
+  file:
+    path: "{{ core_props_dir }}"
+    state: directory
+    mode: 0755
+
+
+- include: ics-core-application.yml
+- include: ics-ips-connector-application.yml
+- include: ips-stub.yml
+- include: logback.yml
+- include: mq-props.yml
+- include: file-connector-logback.yml

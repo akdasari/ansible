@@ -1,0 +1,65 @@
+###########################################################
+# This file is generated thru ansible template
+#  Do not remove or modify
+# file : ics-ips-connector-application properties
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :  This file holds external properties for 
+#         core domain 
+#########################################################
+#DB JNDI names
+imq.cf.jndi={{ imq_jndi }}
+coreuser.datasource.jndi={{ core_jndi }}
+safestore.datasource.jndi={{ safestore_jndi }}
+db.ics.aq.schema={{ db_ics_aq }}
+
+#CachingConnectionFactory SessionCacheSize
+aq.session.cache.size=5
+mq.session.cache.size=5
+
+ics.message.process.retry.policy.count = 15
+ics.message.process.optimistic.locking.retry.policy.count = 5
+ics.message.process.retry.policy.delay.second = 1
+ics.dead.letter.channel.uri = log:dead?level=ERROR
+
+#Used by AlertNotifier
+product.name=ICS IPS Connector Service
+
+# ICS-4348 - Remove this property, signature service is used only in backoffice and access service
+#signature.service.base.url=http://localhost:7001/signature-service
+# queue where ICS will post requests to IPS (leg 1)
+ics.request.to.ips.queue=.REQUEST.TO.IPS
+# queue where IPS will post requets to ICS (leg 2)
+ips.request.to.ics.queue=.REQUEST.FROM.IPS
+# queue where ICS will post responses for IPS (leg 3)
+ics.response.to.ips.queue=.RESPONSE.TO.IPS
+# queue where IPS will post responses for ICS (leg 4)
+ips.response.to.ics.queue=.RESPONSE.FROM.IPS
+
+coreuser.datasource.jndi-name = {{ core_jndi }}
+aq.datasource.schema-name = {{ db_ics_aq }}
+imq.cf.jndi-name = {{ imq_jndi }}
+ics.to.ips.timeout = 20000
+ics.message.process.optimistic.locking.retry.policy.count = 5
+ips-leg1.queue-suffix = _MQ1.REQUEST.TO.IPS_MQ1
+ips-leg2.queue-suffix = _MQ1.REQUEST.FROM.IPS_MQ1
+ips-leg2.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
+ips-leg3.queue-suffix = _MQ1.RESPONSE.TO.IPS_MQ1
+ips-leg4.queue-suffix = _MQ1.RESPONSE.FROM.IPS_MQ1
+ips-leg4.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
+ips-snm.consumer-name = ICS_MQ1.SNM.FROM.IPS_MQ1
+
+ips-snm.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5
+ips-outclearing.queue-name = Q_IPS_OUTCLEARING
+ips-outclearing.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+ips-no-pay.queue-name = Q_IPS_NO_PAY
+ips-no-pay.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+ips-settlement.queue-name = Q_IPS_SETTLEMENT
+
+ips-settlement.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+settlement-status-change.queue-name = Q_SETTL_STATUS_CHANGE
+
+settlement-status-change.producer-params = jmsMessageType=Text
+
+ics.ips.connector.slave.mode={{ connector_slave_mode }}
+signature.service.base.url = {{ sig_service_url }}

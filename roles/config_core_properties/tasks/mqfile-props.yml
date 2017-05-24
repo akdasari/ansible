@@ -1,0 +1,9 @@
+---
+
+- name: create core mq properties
+  copy:
+    src=../files/mq-settings.properties
+    dest="{{ wls_domain_config['core'].core_mq_props }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"

@@ -1,0 +1,9 @@
+---
+
+- name: create core stub  logback xml
+  copy:
+    src=../files/logback_ips-stub.xml
+    dest="{{ wls_domain_config['core'].stub_logback_props }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"

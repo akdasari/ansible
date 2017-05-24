@@ -1,0 +1,55 @@
+---
+# file :main.yml
+# #  Author : Anand Dasari
+# #  Organisation: Vocalink
+# #
+# #  artifacts variables
+
+env:
+   core:
+     group_id: ["com.vocalink.ics.core","com.vocalink.ics.ips","com.vocalink.ics"]
+     artifact_names: ["ics-core-application-ear","ics-ips-connector-application-ear","ips-stub-application"]
+     artifact_version: ["1.0.0-M8.5","1.0.0-M8.5","0.0.6"]
+     packaging: ["ear","ear","war"]
+
+   access:
+     group_id: ["com.vocalink.ics.access","com.vocalink.ics.file.connector"]
+     artifact_names: ["ics-access-application-ear","ics-file-connector"]
+     artifact_version: ["1.0.0-M8.5","0.2.0"]
+     packaging: ["ear","war"]
+
+   bo:
+     group_id: ["com.vocalink.ics.backoffice"]
+     artifact_names: ["ics-backoffice-ear"]
+     artifact_version: ["1.0.0-M8.5"]
+     packaging: ["ear"]
+
+   portal:
+     group_id: ["com.vocalink.ics.portal"]
+     artifact_names: ["ics-portal-application-ear"]
+     artifact_version: ["1.0.0-M8.5"]
+     packaging: ["ear"]
+
+   settlement:
+     group_id: ["com.vocalink.ics","com.vocalink.identity.token"]
+     artifact_names: ["signature-service","identity-token-service-ear"]
+     artifact_version: ["0.3.2","0.4.4"]
+     packaging: ["war","ear"]
+  
+   test-app:
+     group_id: ["com.vocalink.ics"]
+     artifact_names: ["connectivity-test-portal"]
+     artifact_version: ["0.0.2"]
+     packaging: ["war"]
+  
+   db:
+     group_id: ["com.vocalink.ics.database"]
+     artifact_names: ["ics-database"]
+     artifact_version: ["1.0.0-M8.5"]
+     packaging: ["zip"]
+    
+   gateway:
+     group_id: ["com.vocalink.ics.ipsgateway"]
+     artifact_names: ["ics-ips-gateway-war"]
+     artifact_version: ["1.0.14"]
+     packaging: ["war"]

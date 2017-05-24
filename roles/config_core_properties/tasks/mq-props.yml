@@ -1,0 +1,9 @@
+---
+
+- name: create core mq properties
+  template:
+    src=../templates/mq-settings.j2
+    dest="{{ wls_domain_config['core'].core_mq_props }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"

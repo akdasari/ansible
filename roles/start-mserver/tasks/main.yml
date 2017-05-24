@@ -1,0 +1,10 @@
+---
+
+# File : main.yml
+# Author : Anand Dasari
+# Organisation: Vocalink
+#
+- include: mstart_script.yml 
+
+- name: start '{{ domain }}' managed server
+  command: "/usr/bin/bash {{ wls_domain_config[ domain].mserver_start_sh }}"

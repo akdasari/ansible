@@ -1,0 +1,19 @@
+#!/bin/sh
+
+################################################
+# file : start script core managed server
+# Author: Anand Dasari
+# Organization: Vocalink
+# Date: 07-02-2017
+# Desc :This file starts core managed server
+################################################
+
+echo " Exporting Environment Variables"
+. {{ wls_domain_config[ domain].env_script_sh }}
+
+echo " Setting Weblogic Environment classpath "
+. {{ wls_domain_config[ domain].wlsenv_sh }}
+
+echo " Running deployment Command"
+java -Dweblogic.security.SSL.trustedCAKeyStore={{ keysore_location }} weblogic.WLST -loadProperties {{ wls_domain_config[ domain].domain_props }} {{ wls_domain_config[ domain].mserver_stop_py }}
+

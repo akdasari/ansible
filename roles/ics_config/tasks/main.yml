@@ -1,0 +1,19 @@
+---
+# File : main.yml
+# Author : Anand Dasari
+# Organization: Vocalink
+# anand.dasari@vocalink.co.uk
+# This file creates Env variable
+# and wls domain variable files
+
+- name: precheck if dir exists
+  file:
+    path: "{{ scripts_directory }}"
+    state: directory
+    mode: 0755
+
+
+- include: ics_env.yml
+- include: ics_template.yml
+- include: ics_deploy.yml
+

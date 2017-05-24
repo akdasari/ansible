@@ -1,0 +1,9 @@
+---
+# File : main.yml
+# Author : Anand Dasari
+# Organisation: Vocalink
+#
+
+- include: configureFlyway.yml
+- include: runFlyway.yml
+

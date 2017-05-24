@@ -1,0 +1,8 @@
+# nexus variables
+nexus_host: 'tsap6002.test.vocalink.co.uk'
+nexus_port: 8081
+group_id: com.vocalink.ics
+artifact_id: signature-service
+artifact_version: 0.0.1-SNAPSHOT
+repository: public
+packaging: war

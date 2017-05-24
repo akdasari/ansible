@@ -1,0 +1,65 @@
+import os;
+import socket;
+###############################################
+# Author: Anand Dasari
+# Description : create Dats cource
+# Organization: Vocalink
+# Date :  07-04-2017
+#
+###############################################
+
+admin_server_url = 't3s://{{ wls_config[domain].admin_server_listen_address }}:{{ wls_config[domain].admin_server_listen_port}}';
+ 
+print 'DEFINE VARIABLES FOR DOMAIN CREATION';
+application_cluster_name='{{ application_cluster_name }}';
+machine_listen_addresses='{{ machine_listen_addresses }}'.split(',');
+machine_user_id='{{ machine_user_id }}';
+machine_group_id='{{ machine_group_id }}';
+number_of_managed_servers_per_machine={{ number_of_managed_servers_per_machine }};
+maximum_number_of_managed_servers_per_machine={{ maximum_number_of_managed_servers_per_machine }};
+managed_server_listen_port_start={{ managed_server_listen_port_start }};
+ 
+jms_system_resource_name='{{ jms_system_resource_name }}';
+sub_deployment_name='{{ sub_deployment_name }}';
+connection_factory_names='{{ connection_factory_names }}'.split(',');
+connection_factory_jndi_names='{{ connection_factory_jndi_names }}'.split(',');
+distributed_queue_names='{{ distributed_queue_names }}'.split(',');
+distributed_queue_jndi_names='{{ distributed_queue_jndi_names }}'.split(',');
+distributed_error_queue_names='{{ distributed_error_queue_names }}'.split(',');
+distributed_error_queue_jndi_names='{{ distributed_error_queue_jndi_names }}'.split(',');
+ 
+data_source_names='{{ data_source_names }}'.split(',');
+data_source_jndi_names='{{ data_source_jndi_names }}'.split(',');
+data_source_users='{{ data_source_users }}'.split(',');
+data_source_passwords='{{ data_source_passwords }}'.split(',');
+data_source_url='{{ data_source_url }}';
+data_source_driver='{{ data_source_driver }}';
+data_source_test='{{ data_source_test }}';
+data_source_safe_transaction='{{ data_source_safe_transaction }}';
+data_source_grid_link='{{ data_source_grid_link }}';
+data_source_ons_node_list='{{ data_source_ons_node_list }}';
+ 
+configure_ssl='{{ configure_ssl }}';
+managed_server_ssl_listen_port_start='{{ managed_server_ssl_listen_port_start }}';
+config_type='{{ config_type }}';
+store_type='{{ store_type }}';
+key_store_file_name='{{ key_store_file_name }}';
+key_store_pass_phrase='{{ key_store_pass_phrase }}';
+trust_store_file_name='{{ trust_store_file_name }}';
+trust_store_pass_phrase='{{ trust_store_pass_phrase }}';
+private_key_alias='{{ private_key_alias }}';
+private_key_pass_phrase='{{ private_key_pass_phrase }}';
+ 
+...
+ 
+connect_to_admin_server();
+ 
+start_edit_mode();
+ 
+ 
+create_data_source(target);
+ 
+save_and_active_changes();
+ 
+print 'DISCONNECT FROM THE ADMIN SERVER';
+disconnect();

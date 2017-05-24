@@ -1,0 +1,11 @@
+---
+
+# File : main.yml
+# Author : Anand Dasari
+# Organisation: Vocalink
+# Stops the weblogic servers
+#
+- include: core_mserver_stop.yml
+
+- name: stop '{{domain}}' managed server
+  command: "/usr/bin/bash {{ wls_domain_config[ domain ].mserver_stop_sh }}"

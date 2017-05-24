@@ -1,0 +1,40 @@
+---
+# file :main.yml
+# #  Author : Anand Dasari
+# #  Organisation: Vocalink
+# #
+# #  artifacts variables
+
+env:
+   core:
+     artifact_names: ["ics-core-application-ear","ics-ips-connector-application-ear","ips-stub-application"]
+     artifact_version: ["1.0.0-M8.5","1.0.0-M8.5","0.0.6"]
+     packaging: ["ear","ear","war"]
+
+     #artifact_names: ["ics-core-application-ear","ics-ips-connector-application-ear","ips-stub-application"]
+   access:
+     artifact_names: ["ics-access-application-ear","ics-file-connector"]
+     artifact_version: ["1.0.0-M8.5","0.2.0"]
+     packaging: ["ear","war"]
+
+     #artifact_names: ["ics-access-application-ear","ics-file-connector"]
+   bo:
+     artifact_names: ["ics-backoffice-ear"]
+     artifact_version: ["1.0.0-M8.5"]
+     packaging: ["ear"]
+
+   portal:
+     artifact_names: ["ics-portal-application-ear","connectivity-test-portal"]
+     artifact_version: ["1.0.0-M8.5","0.0.2"]
+     packaging: ["ear","war"]
+
+   settlement:
+     artifact_names: ["signature-service","identity-token-service-ear"]
+     artifact_version: ["0.3.2","0.4.4"]
+     packaging: ["war","ear"]
+   
+   gateway:
+     artifact_names: ["ics-ips-gateway-500005"]
+     artifact_version: ["1.0.14"]
+     packaging: ["war"]
+     #artifact_names: ["ics-ips-gateway-100001","ics-ips-gateway-210021","ics-ips-gateway-300003","ics-ips-gateway-500005"]

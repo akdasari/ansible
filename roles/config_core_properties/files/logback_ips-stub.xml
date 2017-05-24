@@ -1,0 +1,25 @@
+<included>
+
+        <property name="LOG_DIR" value="/fs01/log/${weblogic.Domain}/applogs/${weblogic.Name}" />
+
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/ips-stub.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_DIR}/ips-stub.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d %contextName %X{requestId} [%t] %level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.vocalink.ics" level="INFO"/>
+    <logger name="ch.qos" level="ERROR"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="springfox.documentation" level="ERROR"/>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+</included>

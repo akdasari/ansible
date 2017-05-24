@@ -1,0 +1,54 @@
+######################################################
+# This file is generated thru ansible template
+#  Do not remove or modify
+# file : mq-settings properties
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :  This file holds external properties for 
+#         core domain 
+#######################################################
+direct.prefix={{ direct_prefix }}
+mq.queue.prefix={{ mq_prefix }}
+mq.topic.prefix={{ mq_topic_prefix }}
+aq.queue.prefix={{ aq_queue_prefix }}
+aq.topic.prefix={{ aq_topic_prefix }}
+aq.subsc.prefix={{ aq_queue_prefix }}
+aq.topic.event.prefix={{ db_ics_aq }}
+aqss.queue.prefix=oracleAQSS:queue:{{ db_ics_aq }}
+
+ics.tset.internal.queue.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+ics.submission.complete.queue.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+ics.file.submission.queue.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+ics.file.sign.queue.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=10&maxMessagesPerTask=10
+ics.day.manager.queue.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=1&maxMessagesPerTask=1
+ics.settlement.cycle.manager.queue.params=cacheLevelName=CACHE_CONSUMER
+ics.settlement.cycle.manager.out.topic.params=jmsMessageType=Text
+ics.aq.queue.outclearing.params=jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5
+
+# queue where ICS will post requests to IPS (leg 1)
+ics.request.to.ips.queue=ICS.{{ req_to_ips }}
+ics.request.to.ips.queue.params=
+ips.request.from.ics.queue=${ics.request.to.ips.queue}
+ips.request.from.ics.queue.params=${ips.request.from.ics.queue.params}
+
+# queue where IPS will post requets to ICS (leg 2)
+ips.request.to.ics.queue=ICS.{{ req_from_ips }}
+ips.request.to.ics.queue.params=
+ics.request.from.ips.queue=${ips.request.to.ics.queue}
+ics.request.from.ips.queue.params=${ips.request.to.ics.queue.params}
+
+# queue where ICS will post responses for IPS (leg 3)
+ics.response.to.ips.queue=ICS.{{ res_to_ips }}
+ics.response.to.ips.queue.params=
+ips.response.from.ics.queue=${ics.response.to.ips.queue}
+ips.response.from.ics.queue.params=${ics.response.to.ips.queue.params}
+
+# queue where IPS will post responses for ICS (leg 4)
+ips.response.to.ics.queue=ICS.{{ res_from_ips }}
+ips.response.to.ics.queue.params=
+ics.response.from.ips.queue=${ips.response.to.ics.queue}
+ics.response.from.ips.queue.params=${ips.response.to.ics.queue.params}
+response.from.ics.queue=direct:someQueue-from.ics.queue
+request.from.ics.queue.params=
+
+queue.file.changed={{ queue_file_changed }}

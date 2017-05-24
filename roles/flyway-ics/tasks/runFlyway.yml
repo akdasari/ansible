@@ -1,0 +1,8 @@
+---
+- name: Flyway migrate
+  command: "{{ flyway_root }}/flyway-{{ flyway_version }}/flyway clean"
+  command: "{{ flyway_root }}/flyway-{{ flyway_version }}/flyway migrate"
+  args:
+    chdir: "{{ flyway_root }}/flyway-{{ flyway_version }}/"
+  tags:
+    - configureDatabase

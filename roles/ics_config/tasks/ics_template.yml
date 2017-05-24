@@ -1,0 +1,9 @@
+---
+
+- name: create server connection properties
+  template:
+    src=../templates/ics_server_properties.j2
+    dest="{{ wls_domain_config[domain].domain_props }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"

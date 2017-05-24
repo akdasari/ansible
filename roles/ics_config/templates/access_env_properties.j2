@@ -1,0 +1,48 @@
+#!/bin/sh
+
+################################################
+# This file is generated thru ansible template
+# Do not remove or modify
+# file :  Environment   properties
+# Author: Anand Dasari
+# Organization: Vocalink
+# Desc :This file holds environment
+#   variables to be available for deployments.
+################################################
+RUNTIME_HOME="{{ wls_domain_config.access.runtime_home }}"
+export RUNTIME_HOME
+ 
+# Directory where the JVM will be installed
+JAVA_HOME="{{ java_home }}"
+export JAVA_HOME
+ 
+# Directory that will be used as the middleware home (holds software binaries)
+MIDDLEWARE_HOME="{{ wls_domain_config.access.middleware_home }}"
+export MIDDLEWARE_HOME
+ 
+ 
+# User and Group under which the software needs to be installed
+DEPLOY_USER="{{ deploy_user }}"
+export DEPLOY_USER
+DEPLOY_GROUP="{{ deploy_group }}"
+export DEPLOY_GROUP
+ 
+# Name of the domain
+DOMAIN_NAME="{{ wls_domain_config.access.domain_name }}"
+export DOMAIN_NAME
+ 
+# Directory where the configuration will be placed
+CONFIGURATION_HOME="{{ configuration_home }}"
+export CONFIGURATION_HOME
+ 
+# Domain home (directory that contains the domain configuration files)
+DOMAIN_CONFIGURATION_HOME="{{ domain_configuration_home }}"
+export DOMAIN_CONFIGURATION_HOME
+ 
+# Domain application home (directory in which application related artifacts are placed)
+DOMAIN_APPLICATION_HOME="{{ domain_application_home }}"
+export DOMAIN_APPLICATION_HOME
+
+#weblogic default location for wlst scripts
+WEBLOGIC_HOME="{{ wls_domain_config.access.weblogic_home }}"
+export WEBLOGIC_HOME

@@ -1,0 +1,15 @@
+---
+# File : copyTemplate.yml
+# Author : Anand Dasari
+# This file creates deployment template first time
+#
+
+- name: create deploy_artifacts.py
+  template:
+    src=../templates/deployment_env.j2 
+    dest="{{ wls_domain_config[domain].deploy_artifacts_py }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"
+  register: deploy_artifacts_py_created
+ 

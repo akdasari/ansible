@@ -1,0 +1,13 @@
+---
+# File : deploy_artefacts.yml
+# Author : Anand Dasari
+# Organisation : Vocalink
+# This file uses wlst script to deploy
+# artefacts on target machines
+#
+
+- name: (un)deploy applications
+  command: "/usr/bin/bash {{ wls_domain_config[domain].deploy_script_sh }}"
+  notify:
+    - deletefiles
+

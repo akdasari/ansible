@@ -1,0 +1,13 @@
+---
+# File : main.yml
+# # Author : Anand Dasari
+# # Organisation : Vocalink
+# # This file deletes the artifacts from target directory after deployment
+# 
+  - name: deletefiles
+    file: path="/fs01/release/devops/{{ item }}/app/" state="absent"
+    with_items:
+       - "{{ env[domain].artifact_names }}"
+ 
+  - name: copy_plan
+    shell: echo 'test'

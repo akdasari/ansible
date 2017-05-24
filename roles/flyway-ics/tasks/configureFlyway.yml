@@ -1,0 +1,24 @@
+---
+- name: Configure Flyway
+ # become: true
+  template:
+    src=../templates/flyway.conf.j2
+    dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.conf
+    owner=devops
+    group=devops
+    force=true
+    mode=0644
+  tags:
+    - configureDatabase
+
+- name: Copy Flyway migrations
+ # become: true
+  copy:
+    src=../conf/schemaMigrations
+    dest={{flyway_root}}/flyway-{{flyway_version}}/sql/
+    owner=devops
+    group=devops
+    force=true
+    mode=0644
+  tags:
+    - configureDatabase

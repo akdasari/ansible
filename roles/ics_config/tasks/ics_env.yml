@@ -1,0 +1,8 @@
+---
+- name: create Environment_properties.sh
+  template:
+    src=../templates/ics_env_properties.j2
+    dest="{{ wls_domain_config[domain].env_script_sh }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0744"

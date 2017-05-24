@@ -1,0 +1,18 @@
+---
+- name: create managed server python template
+  template:
+    src=../templates/stop-mserver.py.j2
+    dest="{{wls_domain_config[ domain ].mserver_stop_py}}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode="0644"
+  register: start_mserver_py created
+
+
+- name: create managed server stop script
+  template:
+    src=../templates/stop-mserver.j2
+    dest="{{ wls_domain_config[ domain ].mserver_stop_sh }}"
+    owner="{{ deploy_user }}"
+    group="{{ deploy_group }}"
+    mode=0644

@@ -1,0 +1,191 @@
+
+
+play contains taks like this
+- name: check if {{ item.0 }}-{{ item.1 }} installed
+  command: rpm -q {{ item.0 }}-{{ item.1 }}
+  register: rpm_check
+  ignore_errors: true
+  with_together:
+        - "{{ env[domain].artifact_names }}"
+        - "{{ env[domain].artifact_version }}"
+#- debug: var=rpm_check.stdout
+
+- name: install/update rpm
+  command: "rpm -Uvh {{ domain_application_home }}/{{ item.0 }}/app/{{ item.0 }}-{{ item.1 }}.{{ item.2 }}"
+  when: rpm_check.stdout.find('is not installed') != -1
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+         - "{{ env[domain].artifact_version }}"
+         - "{{ env[domain].packaging }}"
+when running register variable in loop and checking it fails as follows
+
+ERROR:  The error was: error while evaluating conditional (rpm_check.stdout.find('is not installed') != -1): 'dict object' has no attribute 'stdout'\n\nThe error appears to have been in '/fs01/ics-automation/roles/ips_deploy/tasks/deploy_artifacts.yml': line 18, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: install/update rpm\n  ^ here\n"
+
+Solution : register output here put into results. so modify second bit as follows
+
+- name: install/update rpm
+  command: "rpm -Uvh {{ domain_application_home }}/{{ item.0 }}/app/{{ item.0 }}-{{ item.1 }}.{{ item.2 }}"
+  when: rpm_check.results[0].stdout.find('is not installed') != -1
+  with_together:
+         - "{{ env[domain].artifact_names }}"
+         - "{{ env[domain].artifact_version }}"
+         - "{{ env[domain].packaging }}"
+
+
+ICS - deployment steps
+--------------------------
+
+ Log onto  csap6002x box as devops user
+ password :  Perf0rce!2
+
+  cd to  /fs01/ics-automation
+
+ whenever new version to deploy 
+ 
+ Modify the follwoing roles 
+ one for  downloading and another for deployment
+as downloading we are downloading from different repo i hav eto create separate roles, though they look similar
+
+ ics-automation/roles/ics-download-artifacts/vars/main.yml    - for the latest version from nexus
+ 
+for deployment
+ics-automation/roles/ics-artifacts/vars/main.yml
+
+ For SIT1
+-------------
+
+ download  artifacts locally
+-----------------------------
+
+ ansible-playbook  playbooks/local_ics_download.yml -e domain=core
+
+ To download   Gateway need to use separate play as this comes from different repository
+
+ansible-playbook  playbooks/local_gateway_download.yml
+
+ansible-playbook -i inv/sit1 playbooks/local_ics_download.yml  
+
+ Repeat this for each domain ,  bo , access,  portal
+ 
+ configure domains
+---------------------
+
+ ansible-playbook -i inv/sit1 playbooks/config_ics_env.yml -e domain=core
+
+Repeat this for  bo, access, portal
+
+  To DRY-RUN run the following- this will not change on atrget servers
+-------------------------------------------------------------------------------
+ansible-playbook -i inv/ft2/ playbooks/ft2/ics/deploy_ics_core.yml -e domain=core --check
+
+
+
+ deploy to domains
+--------------------
+
+ ansible-playbook -i inv/sit1 playbooks/sit1/deploy_ics_core.yml -e domain=core
+ ansible-playbook -i inv/sit1 playbooks/sit1/deploy_ics_core.yml -e domain=bo
+ ansible-playbook -i inv/sit1 playbooks/sit1/deploy_ics_core.yml -e domain=access
+ ansible-playbook -i inv/sit1 playbooks/sit1/deploy_ics_core.yml -e domain=portal
+ 
+ 
+ Signature -service deployment
+-----------------------------------
+ ansible-playbook -i inv/sit1 playbooks/sit1/deploy_ics_settlement.yml -e domain=settlement
+
+
+ STOP Managed servers
+  -------------------------
+
+  ansible-playbook -i inv/sit1 playbooks/sit1/stop_all_servers.yml
+
+ STOP individual servers
+ -------------------------
+   
+  ansible-playbook -i inv/sit1 playbooks/sit1/stop_mservers.yml -e domain=core
+ 
+  Repeat for each domain
+
+ START Mservers
+ ------------------
+  ansible-playbook -i inv/sit1 playbooks/sit1/start_all_mservers.yml
+
+
+
+
+JENKINS
+------------
+configured jenkins on my vm and when access the job from ui , it can't see
+vault_password_file = /home/devops/.vpass
+
+This is because jenkins runs as  jenkins user and to change this added
+the  plugin authorizeprojectplugin
+and config plugin to run job as logged in user,  which is devops, then job can see vpass under devops
+
+Also need to run the job as sudo command
+ 
+
+
+GIT
+-----
+export http_proxy="http://<user>:<pass>@10.97.6.33:8080"
+
+git clone is giving erro 407, that means we are using proxy and local ips shouldn't use proxy so disable proxy when cloning git
+http_proxy="" git clone http://anand.dasari@10.105.32.3:7990/scm/ics/ics-automation.git
+
+
+to add proxy
+git config --global http.proxy "http://anand.dasari:Perf0rce\!2@10.97.6.33:8080"
+
+
+CREATE and COPY SSH keys
+--------------------------------------------------------
+
+ssh-keygen -t rsa
+
+Copy either
+-----------------
+cat ~/.ssh/id_rsa.pub | ssh $REMOTE_USER@$REMOTE_BOX 'umask 0077; mkdir -p .ssh; cat >> .ssh/authorized_keys && echo "Key copied"'
+
+or simple way is 
+-----------------------
+ ssh-copy-id devops@<hostip or name>
+
+
+FT2 FT2_IPSAPP schema connection
+-----------------------------------------
+sqlplus FT2_IPSAPP/"Password123-"@ICSDSSERVICE.TEST.VOCALINK.CO.UK
+
+
+
+
+#!/usr/bin/ksh
+echo "Starting file execution"
+date
+sqlplus -s userid/password  << EOF >> /work/deepankar/out_put
+@insert.sql
+EOF
+
+
+TO RUN ANSIBLE in DRY MODE
+================================
+
+ansible-playbook -i inv/ft2 playbooks/ft2/ics/stop_all_core_servers.yml --check
+
+
+Check user groups
+------------------------------
+id -a devops    ( id -a <username>)
+
+sudo -l 
+
+
+when files created in windows and ported to linux we get 
+--------------------------------------------------------
+
+/bin/sh^M: bad interpreter: No such file or directory
+
+to get rid of this run the following command in terminal
+
+
+ sed -i -e 's/\r$//' start_gateway.sh

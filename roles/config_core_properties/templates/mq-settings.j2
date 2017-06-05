@@ -52,3 +52,7 @@ response.from.ics.queue=direct:someQueue-from.ics.queue
 request.from.ics.queue.params=
 
 queue.file.changed={{ queue_file_changed }}
+
+snm.from.ips.mq=SNM.FROM.IPS
+snm.from.ips.mq.params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5
+queue.file.changed=oracleAQSS:queue ST1_ICSAQ.Q_FILE_CHANGED?cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=5&maxMessagesPerTask=5

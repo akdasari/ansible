@@ -17,10 +17,10 @@ db.ics.aq.schema={{ db_ics_aq }}
 aq.session.cache.size=5
 mq.session.cache.size=5
 
-ics.message.process.retry.policy.count = 15
-ics.message.process.optimistic.locking.retry.policy.count = 5
-ics.message.process.retry.policy.delay.second = 1
-ics.dead.letter.channel.uri = log:dead?level=ERROR
+ics.message.process.retry.policy.count=15
+ics.message.process.optimistic.locking.retry.policy.count=5
+ics.message.process.retry.policy.delay.second=1
+ics.dead.letter.channel.uri=log:dead?level=ERROR
 
 #Used by AlertNotifier
 product.name=ICS IPS Connector Service
@@ -36,30 +36,30 @@ ics.response.to.ips.queue=.RESPONSE.TO.IPS
 # queue where IPS will post responses for ICS (leg 4)
 ips.response.to.ics.queue=.RESPONSE.FROM.IPS
 
-coreuser.datasource.jndi-name = {{ core_jndi }}
-aq.datasource.schema-name = {{ db_ics_aq }}
-imq.cf.jndi-name = {{ imq_jndi }}
-ics.to.ips.timeout = 20000
-ics.message.process.optimistic.locking.retry.policy.count = 5
-ips-leg1.queue-suffix = _MQ1.REQUEST.TO.IPS_MQ1
-ips-leg2.queue-suffix = _MQ1.REQUEST.FROM.IPS_MQ1
-ips-leg2.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
-ips-leg3.queue-suffix = _MQ1.RESPONSE.TO.IPS_MQ1
-ips-leg4.queue-suffix = _MQ1.RESPONSE.FROM.IPS_MQ1
-ips-leg4.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
-ips-snm.consumer-name = ICS_MQ1.SNM.FROM.IPS_MQ1
+coreuser.datasource.jndi-name={{ core_jndi }}
+aq.datasource.schema-name={{ db_ics_aq }}
+imq.cf.jndi-name={{ imq_jndi }}
+ics.to.ips.timeout=20000
+ics.message.process.optimistic.locking.retry.policy.count=5
+ips-leg1.queue-suffix=.REQUEST.TO.IPS
+ips-leg2.queue-suffix=.REQUEST.FROM.IPS
+ips-leg2.consumer-params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
+ips-leg3.queue-suffix=.RESPONSE.TO.IPS
+ips-leg4.queue-suffix=.RESPONSE.FROM.IPS
+ips-leg4.consumer-params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5&exceptionListener=#leg24ExceptionHandler
+ips-snm.consumer-name=SNM.FROM.IPS
 
-ips-snm.consumer-params = cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5
-ips-outclearing.queue-name = Q_IPS_OUTCLEARING
-ips-outclearing.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
-ips-no-pay.queue-name = Q_IPS_NO_PAY
-ips-no-pay.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
-ips-settlement.queue-name = Q_IPS_SETTLEMENT
+ips-snm.consumer-params=cacheLevelName=CACHE_CONSUMER&concurrentConsumers=1&maxConcurrentConsumers=5&maxMessagesPerTask=5
+ips-outclearing.queue-name=Q_IPS_OUTCLEARING
+ips-outclearing.consumer-params=jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+ips-no-pay.queue-name=Q_IPS_NO_PAY
+ips-no-pay.consumer-params=jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+ips-settlement.queue-name=Q_IPS_SETTLEMENT
 
-ips-settlement.consumer-params = jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
-settlement-status-change.queue-name = Q_SETTL_STATUS_CHANGE
+ips-settlement.consumer-params=jmsMessageType=Text&cacheLevelName=CACHE_CONSUMER&concurrentConsumers=5&maxConcurrentConsumers=10&maxMessagesPerTask=5
+settlement-status-change.queue-name=Q_SETTL_STATUS_CHANGE
 
-settlement-status-change.producer-params = jmsMessageType=Text
+settlement-status-change.producer-params=jmsMessageType=Text
 
 ics.ips.connector.slave.mode={{ connector_slave_mode }}
-signature.service.base.url = {{ sig_service_url }}
+signature.service.base.url={{ sig_service_url }}

@@ -1,0 +1,9 @@
+- hosts: ics_core
+  user: devops
+  gather_facts: yes
+  
+  tasks:
+    - debug:
+       #msg: "System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}"
+       msg: "command variable {{ ansible_hostname }} "
+        

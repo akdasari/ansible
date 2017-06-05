@@ -138,6 +138,11 @@ wls_domain_config:
       mserver_stop_py: '{{ scripts_directory }}/core_mserver_stop.py'
       mserver_start_sh: '{{ scripts_directory }}/core_mserver_start.sh'
       mserver_stop_sh: '{{ scripts_directory }}/core_mserver_stop.sh'
+      #gateway_props: '{{domain_application_home}}/properties/stC01/ics-ips-gateway/config-ips-gateway/ics-ips-gateway-{{ gateway }}/gateway.properties'
+      #snmp_props: '{{domain_application_home}}/properties/stC01/ics-ips-gateway/config-ips-gateway/ics-ips-gateway-{{ gateway }}/snmp.properties'
+      #bankgateway_xml: '{{domain_application_home}}/properties/stC01/ics-ips-gateway/config-ips-gateway/ics-ips-gateway-{{ gateway }}/bankgateway-config.xml'
+      #dsp_props: '{{domain_application_home}}/properties/stC01/ics-ips-gateway/config-ips-gateway/ics-ips-gateway-{{ gateway }}/dsp.properties'
+      #log4j_xml: '{{domain_application_home}}/properties/stC01/ics-ips-gateway/config-ips-gateway/ics-ips-gateway-{{ gateway }}/log4j.xml'
     sws:
       env_script_sh: '{{ scripts_directory }}/swsEnv.sh'
       deploy_artifacts_py: '{{ scripts_directory }}/sws_deploy.py'
